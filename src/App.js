@@ -3,6 +3,8 @@ import React, { useEffect, useState } from 'react';
 
 const Weather = () => {
   const [currentTemperature, setCurrentTemperature] = useState(0);
+  const [currentTemperatureF, setCurrentTemperatureF] = useState(0);
+
   const [chosenTemperature, setChosenTemperature] = useState(null);
   const [inputCity, setInputCity] = useState('');
   const [currentCity, setCurrentCity] = useState('Casablanca');
@@ -35,7 +37,7 @@ const Weather = () => {
       setChosenTemperature(currentTemperature);
       setTemperatureUnit('Celsius');
     } else {
-      setChosenTemperature(currentTemperature);
+      setChosenTemperature(currentTemperatureF);
       setTemperatureUnit('Fahrenheit');
     }
   };
@@ -51,6 +53,7 @@ const Weather = () => {
 
       setCurrentTemperature(data.current.temp_c);
       setChosenTemperature(data.current.temp_c);
+      setCurrentTemperatureF(data.current.temp_f)
     } catch (error) {
       console.log(error);
     }
